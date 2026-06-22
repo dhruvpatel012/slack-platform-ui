@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack | AI work platform and productivity tools</title>
+  <meta name="description"
+    content="Slack connects your team. Slackbot multiplies what they can do. Recreate a Slack-like UI using vanilla HTML, CSS, and JS." />
+
+  <!-- ------- Google Fonts Link ------- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- ------- Remix Icon CDN ------- -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- ------- Font Awesome CDN ------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+
+  <!-- ------- Modular Stylesheets ------- -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaQuery.css" />
+</head>
+
+<body>
+  <div class="slack-container">
+    <!-- ------- Section 1: Sticky Navigation Bar ------- -->
+    <header id="site-header" class="site-header">
+      <nav class="nav-wrapper">
+        <div class="nav-left">
+          <a href="#" class="logo-link" id="logo-home">
+            <img src="./assets/slack-logo.png" alt="slack-logo" />
+          </a>
+
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <button class="nav-btn" id="trigger-features" aria-expanded="false" aria-haspopup="true"
+                aria-controls="menu-features">
+                Features <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-btn" id="trigger-solutions" aria-expanded="false" aria-haspopup="true"
+                aria-controls="menu-solutions">
+                Solutions <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="signin-btn">Enterprise</a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-btn" id="trigger-resources" aria-expanded="false" aria-haspopup="true"
+                aria-controls="menu-resources">
+                Resources <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="signin-btn">Pricing</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <button class="search-btn" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <a href="#" class="signin-btn" id="trigger-signin">Sign In</a>
+          <button class="btn btn-outline" id="trigger-demo">
+            REQUEST A DEMO
+          </button>
+          <button class="btn btn-primary" id="trigger-started">
+            GET STARTED
+          </button>
+        </div>
+
+        <button class="hamburger-menu" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false"
+          aria-controls="mobile-panel">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- ------- Section 1a: Features Mega-menu Dropdown ------- -->
+      <div id="menu-features" class="megamenu-overlay" role="region" aria-labelledby="trigger-features">
+        <div class="megamenu-mobile-header">
+          <button class="megamenu-back-btn" aria-label="Back to main menu">
+            <i class="fa-solid fa-chevron-left"></i> Back
+          </button>
+          <button class="megamenu-close-btn" aria-label="Close features menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div>
+          <h4 class="megamenu-title">Collaboration</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Channels</span><span
+                  class="megamenu-item-desc">Organise teams and work</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Slack Connect</span><span
+                  class="megamenu-item-desc">Work with external partners</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Messaging</span><span
+                  class="megamenu-item-desc">Chat with your team</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Huddles</span><span
+                  class="megamenu-item-desc">Meet using audio and video</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Clips</span><span
+                  class="megamenu-item-desc">Record and share updates</span></a>
+            </li>
+          </ul>
+          <h4 class="megamenu-title mt-24">CRM</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Salesforce in Slack</span><span
+                  class="megamenu-item-desc">Bring Salesforce into the flow of work</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="megamenu-title">Project Management</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Templates</span><span
+                  class="megamenu-item-desc">Start any task, fast</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Canvas</span><span
+                  class="megamenu-item-desc">Create rich, flexible docs</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Lists</span><span
+                  class="megamenu-item-desc">Organise, track and manage projects</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">File sharing</span><span
+                  class="megamenu-item-desc">Bring files into the flow of work</span></a>
+            </li>
+          </ul>
+          <h4 class="megamenu-title mt-24">Platform</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Agentic platform</span><span
+                  class="megamenu-item-desc">Customise, extend and unify your tech stack</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Apps & Integrations</span><span
+                  class="megamenu-item-desc">Connect your tools with Slack</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Workflow Builder</span><span
+                  class="megamenu-item-desc">Automate everyday tasks</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="megamenu-title">Intelligence</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title"><i
+                    class="fa-solid fa-wand-magic-sparkles wand-icon"></i>
+                  AI in Slack</span><span class="megamenu-item-desc">Save time and work smarter with AI</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Slackbot</span><span
+                  class="megamenu-item-desc">Power productivity with your personal agent</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Agentforce</span><span
+                  class="megamenu-item-desc">Empower your whole team with agents</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Enterprise search</span><span
+                  class="megamenu-item-desc">Find anything, from a single bar</span></a>
+            </li>
+          </ul>
+          <h4 class="megamenu-title mt-24">Admin & Security</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Security</span><span
+                  class="megamenu-item-desc">Protect data, ensure compliance</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Enterprise Key Management</span><span
+                  class="megamenu-item-desc">Monitor and revoke access</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Slack Atlas</span><span
+                  class="megamenu-item-desc">Discover rich profiles and org charts</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="megamenu-promo">
+          <div>
+            <h4 class="megamenu-title">Slack Marketplace</h4>
+            <img class="megamenu-promo-img" src="assets/marketplace-feature.jpg"
+              alt="Slack Marketplace Promotional Banner" />
+            <p class="megamenu-item-desc mb-12">
+              Find new agents and apps that fit your team's needs.
+            </p>
+            <a href="#" class="megamenu-promo-link">Browse marketplace <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="megamenu-promo-divider">
+            <h4 class="megamenu-title">Feature Releases</h4>
+            <p class="megamenu-item-title">Slackbot Skills, and more</p>
+            <a href="#" class="megamenu-promo-link">See what's new <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="megamenu-footer">
+          <div class="megamenu-footer-left">
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-play"></i> Watch demo</a>
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-download"></i> Download Slack</a>
+          </div>
+          <a href="#" class="megamenu-footer-link">See all features <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- ------- Section 1b: Solutions Mega-menu Dropdown ------- -->
+      <div id="menu-solutions" class="megamenu-overlay" role="region" aria-labelledby="trigger-solutions">
+        <div class="megamenu-mobile-header">
+          <button class="megamenu-back-btn" aria-label="Back to main menu">
+            <i class="fa-solid fa-chevron-left"></i> Back
+          </button>
+          <button class="megamenu-close-btn" aria-label="Close solutions menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div>
+          <h4 class="megamenu-title">By Department</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Engineering</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">IT</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Customer service</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Sales</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Project management</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Marketing</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Human Resources</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Security</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="megamenu-title">By Industry</h4>
+          <ul class="megamenu-list">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Manufacturing, auto and
+                  energy</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Technology</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Media</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Small business</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Financial services</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Retail</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Education</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Health and life sciences</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="megamenu-promo grid-span-2">
+          <div>
+            <h4 class="megamenu-title">Template Gallery</h4>
+            <img class="megamenu-promo-img gallery-img" src="assets/feature-template-nav-img.jpg"
+              alt="Slack Solutions Templates Gallery" />
+            <p class="megamenu-item-desc mb-12">
+              Start work faster with pre-made templates for every task.
+            </p>
+            <a href="#" class="megamenu-promo-link">See all templates <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="megamenu-promo-footer-grid">
+            <a href="#" class="megamenu-footer-link">Task management</a>
+            <a href="#" class="megamenu-footer-link">Scale</a>
+            <a href="#" class="megamenu-footer-link">Engagement</a>
+            <a href="#" class="megamenu-footer-link">Trust</a>
+          </div>
+        </div>
+        <div class="megamenu-footer">
+          <div class="megamenu-footer-left">
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-play"></i> Watch demo</a>
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-download"></i> Download Slack</a>
+          </div>
+          <a href="#" class="megamenu-footer-link">See all solutions <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- ------- Section 1c: Resources Mega-menu Dropdown ------- -->
+      <div id="menu-resources" class="megamenu-overlay" role="region" aria-labelledby="trigger-resources">
+        <div class="megamenu-mobile-header">
+          <button class="megamenu-back-btn" aria-label="Back to main menu">
+            <i class="fa-solid fa-chevron-left"></i> Back
+          </button>
+          <button class="megamenu-close-btn" aria-label="Close resources menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div>
+          <ul class="megamenu-list mt-16">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Resources library</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Events</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Customer stories</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Blog</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="megamenu-list mt-16">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">What's new</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Developers</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Community</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Slack Marketplace</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="megamenu-list mt-16">
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Product tour</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Partner programme</span></a>
+            </li>
+            <li>
+              <a href="#" class="megamenu-link"><span class="megamenu-item-title">Slack Certified</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="megamenu-promo">
+          <div>
+            <h4 class="megamenu-title">Featured</h4>
+            <img class="megamenu-promo-img" src="assets/resource-nav-img.jpg" alt="Featured Resource AI Banner" />
+            <p class="megamenu-item-title">Winning in the AI era of work.</p>
+            <a href="#" class="megamenu-promo-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="megamenu-featured-sublinks">
+            <a href="#" class="megamenu-footer-link">Help Centre</a>
+            <a href="#" class="megamenu-footer-link">Customer support</a>
+          </div>
+        </div>
+        <div class="megamenu-footer">
+          <div class="megamenu-footer-left">
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-play"></i> Watch demo</a>
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-download"></i> Download Slack</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ------- Mobile Slide-out Menu Overlay Container ------- -->
+    <div id="mobile-panel" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation panel">
+      <div class="mobile-header">
+        <a href="#" class="logo-link">
+          <img class="logo-img" src="assets/slack-logo.png" alt="Slack Logo" />
+        </a>
+        <button class="modal-close" id="mobile-close-btn" aria-label="Close mobile menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="mobile-links">
+        <a href="#" class="mobile-link" id="mobile-trigger-features">Features <i
+            class="fa-solid fa-chevron-right"></i></a>
+        <a href="#" class="mobile-link" id="mobile-trigger-solutions">Solutions <i
+            class="fa-solid fa-chevron-right"></i></a>
+        <a href="#" class="mobile-link">Enterprise</a>
+        <a href="#" class="mobile-link" id="mobile-trigger-resources">Resources <i
+            class="fa-solid fa-chevron-right"></i></a>
+        <a href="#" class="mobile-link">Pricing</a>
+      </div>
+      <div class="mobile-footer">
+        <button class="btn btn-outline w-full" id="mobile-demo">
+          REQUEST A DEMO
+        </button>
+        <button class="btn btn-primary w-full" id="mobile-signup">
+          GET STARTED
+        </button>
+      </div>
+    </div>
+
+    <!-- ------- Section 1: Hero Section Layout ------- -->
+    <main id="main-content">
+      <section class="hero-section" id="hero-banner">
+        <h1 class="hero-title">
+          All your people and<br />AI agents working together.
+        </h1>
+        <p class="hero-desc">
+          Slack connects your team. Slackbot multiplies what they can do.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-hero-primary" id="hero-started">
+            GET STARTED
+          </button>
+          <button class="btn btn-hero-secondary" id="hero-subscription">
+            FIND YOUR SUBSCRIPTION <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="brand-showcase">
+          <div class="trusted-teams">
+            <span>Trusted by top teams</span>
+          </div>
+          <div class="brand-logos">
+            <img class="brand-logo" src="assets/gm-logo.png" alt="GM Logo" />
+            <img class="brand-logo" src="assets/Open-AI-logo.png" alt="OpenAI Logo" />
+            <img class="brand-logo" src="assets/paramount-logo.png" alt="Paramount Logo" />
+            <img class="brand-logo" src="assets/stripe-logo.png" alt="Stripe Logo" />
+            <img class="brand-logo" src="assets/IBM-logo.png" alt="IBM Logo" />
+          </div>
+        </div>
+
+        <!-- ------- Mobile Active Hero Tab Title Pill ------- -->
+        <div class="mobile-hero-title-pill" id="mobile-hero-title-pill">
+          Ask Slackbot 🤖
+        </div>
+
+        <!-- ------- Interactive Hero Video Showcase Mockup ------- -->
+        <div class="video-mockup" id="hero-video-player" role="region" aria-label="Product demo video player">
+          <video class="video-media" id="hero-video-media" autoplay muted loop playsinline src="assets/Ask-Slackbot.mp4"
+            aria-label="Slack Desktop Dashboard Mockup displaying active features"></video>
+
+          <div class="video-controls" role="group" aria-label="Video controls">
+            <div class="video-controls-left">
+              <button class="video-play" id="video-play-btn" aria-label="Play video">
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <span class="video-time" id="video-time-label" aria-live="polite">0:00 / 0:27</span>
+            </div>
+            <div class="video-controls-right">
+              <button class="video-mute" id="video-mute-btn" aria-label="Mute video">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <button class="video-fullscreen" id="video-fullscreen-btn" aria-label="Toggle fullscreen">
+                <i class="fa-solid fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------- Mobile Pagination Dots ------- -->
+        <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Slide dots selector">
+          <span class="hero-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></span>
+          <span class="hero-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></span>
+          <span class="hero-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3"></span>
+          <span class="hero-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4"></span>
+          <span class="hero-dot" data-index="4" role="tab" aria-selected="false" aria-label="Slide 5"></span>
+        </div>
+
+        <!-- ------- Interactive Hero Tabs Switcher Buttons ------- -->
+        <div class="hero-tabs" role="tablist" aria-label="Interactive feature tabs">
+          <button class="hero-tab active" id="hero-tab-ask" role="tab" aria-selected="true"
+            aria-controls="hero-video-player">
+            Ask Slackbot 🤖
+          </button>
+          <button class="hero-tab" id="hero-tab-plan" role="tab" aria-selected="false"
+            aria-controls="hero-video-player">
+            Plan launches 🔀
+          </button>
+          <button class="hero-tab" id="hero-tab-run" role="tab" aria-selected="false" aria-controls="hero-video-player">
+            Run projects 🗂️
+          </button>
+          <button class="hero-tab" id="hero-tab-chat" role="tab" aria-selected="false"
+            aria-controls="hero-video-player">
+            Chat with clients 🔗
+          </button>
+          <button class="hero-tab" id="hero-tab-automate" role="tab" aria-selected="false"
+            aria-controls="hero-video-player">
+            Automate tasks 🪄
+          </button>
+        </div>
+      </section>
+
+      <!-- ------- Section 2: AI Capabilities Section (Dark Purple) ------- -->
+      <section class="ai-showcase" id="section-ai">
+        <div class="ai-stars-left">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-sparkles"></i>
+        </div>
+        <div class="ai-stars-right">
+          <i class="fa-solid fa-sparkles"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+
+        <div class="ai-header">
+          <h2 class="ai-title">
+            Reimagine what's possible<br />with AI and agents.
+          </h2>
+          <p class="ai-desc">
+            AI in Slack doesn't make you think, it helps you do. It summarises
+            and searches based on actual conversations, making every app and
+            agent more helpful and contextually aware than ever.
+          </p>
+        </div>
+
+        <div class="ai-grid">
+          <nav class="ai-menu">
+            <button class="ai-menu-btn active" id="ai-tab-deals">
+              <span>Update deals just by asking Slackbot
+                <span class="ai-badge">New</span></span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="ai-menu-btn" id="ai-tab-summarise">
+              <span>Summarise a conversation you missed</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="ai-menu-btn" id="ai-tab-claude">
+              <span>Get fast answers with Claude
+                <span class="ai-badge">New</span></span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="ai-menu-btn" id="ai-tab-note">
+              <span>Turn on AI note-taking in huddles</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="ai-menu-btn" id="ai-tab-copilot">
+              <span>Review code with GitHub Copilot</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="ai-menu-btn" id="ai-tab-agentforce">
+              <span>Look up customer data in Agentforce</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </nav>
+
+          <div class="mobile-ai-title-pill" id="mobile-ai-title-pill">
+            Update deals just by asking Slackbot
+            <span class="ai-badge">New</span>
+          </div>
+
+          <div class="ai-mockup" id="ai-mockup-wrapper">
+            <video class="ai-mockup-video" id="ai-mockup-media" autoplay loop muted playsinline
+              src="assets/Update-deals-just-by-asking-Slackbot.webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="ai-dots" id="ai-dots">
+            <div class="ai-dot active" data-index="0"></div>
+            <div class="ai-dot" data-index="1"></div>
+            <div class="ai-dot" data-index="2"></div>
+            <div class="ai-dot" data-index="3"></div>
+            <div class="ai-dot" data-index="4"></div>
+            <div class="ai-dot" data-index="5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 3: What's New Carousel Section ------- -->
+      <section class="whats-new" id="whats-new-carousel">
+        <div class="carousel-header">
+          <div>
+            <h2 class="carousel-title">What's new in Slack</h2>
+            <a href="#" class="carousel-link">See all updates <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="carousel-arrows">
+            <button class="carousel-arrow-btn" id="carousel-prev-btn">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-arrow-btn" id="carousel-next-btn">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-viewport" id="carousel-view">
+          <div class="content-card">
+            <div class="card-img-wrapper">
+              <img class="card-img" src="assets/slackbot-skills.png" alt="Slackbot Skills Card visual" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">New Feature</span>
+              <h3 class="card-title">Slackbot Skills</h3>
+              <p class="card-desc">
+                Slackbot can do the work for you, and you don't need to tell
+                it twice.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-img-wrapper">
+              <img class="card-img" src="assets/slackbot-email-calendar.png" alt="Slackbot Email Actions visual" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Feature Enhancement</span>
+              <h3 class="card-title">Slackbot Email and Calendar Actions</h3>
+              <p class="card-desc">
+                Leave Slack less. Manage emails and calendar schedules
+                directly in channels.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-img-wrapper">
+              <img class="card-img" src="assets/slackbot-scheduled-automation.png"
+                alt="Slackbot Scheduled Tasks visual" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Feature Enhancement</span>
+              <h3 class="card-title">Slackbot Scheduled Tasks</h3>
+              <p class="card-desc">
+                Set it and forget it - and let Slackbot handle the rest of
+                your routine updates.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-img-wrapper">
+              <img class="card-img" src="assets/create-new-view.png" alt="Activity Tab visual" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">New Feature</span>
+              <h3 class="card-title">New Activity Tab</h3>
+              <p class="card-desc">
+                Slack just got even more organised - just in time for some
+                spring cleaning.
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-img-wrapper">
+              <img class="card-img" src="assets/generate-ai-response.png" alt="Workflow Builder AI visual" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Feature Enhancement</span>
+              <h3 class="card-title">Generate AI Response Step Workflow</h3>
+              <p class="card-desc">
+                Generative AI just became a native step in every automated
+                Slack workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 4: Tabbed Deep Dive Hub ------- -->
+      <section class="deep-dive-hub" id="capabilities-hub">
+        <!-- ------- Central Tab Selector Pills ------- -->
+        <div class="hub-tabs-wrapper">
+          <div class="hub-tabs">
+            <button class="hub-tab active" id="hub-tab-knowledge">
+              Knowledge
+            </button>
+            <button class="hub-tab" id="hub-tab-people">People</button>
+            <button class="hub-tab" id="hub-tab-process">Process</button>
+            <button class="hub-tab" id="hub-tab-platform">Platform</button>
+          </div>
+        </div>
+
+        <!-- ------- 4a: Knowledge Deep Dive Section ------- -->
+        <div id="hub-sec-knowledge" class="hub-section active">
+          <div class="hub-header">
+            <h2 class="hub-title">Give everyone instant context.</h2>
+            <p class="hub-desc">
+              Get access to every file, decision and conversation, so you can
+              build on past work instead of recreating it.
+            </p>
+          </div>
+
+          <div class="hub-grid">
+            <div class="hub-menu">
+              <button class="hub-menu-item active">
+                <span class="hub-item-title">Meet Slackbot: Your personal agent for work.</span>
+                <span class="hub-item-desc">
+                  Slackbot isn't just any AI. It's AI that knows you and your
+                  team. It coordinates work across your apps and agents so
+                  that one conversation can get work done.
+                </span>
+                <a href="#" class="hub-item-link">Learn more about Slackbot
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">One search to rule them all.</span>
+                <span class="hub-item-desc">
+                  Find messages, documents, files, and channels instantly, all
+                  from one unified Search Bar.
+                </span>
+                <a href="#" class="hub-item-link">Learn more about Search
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">Bring CRM data to the conversation.</span>
+                <span class="hub-item-desc">
+                  Link your Salesforce, HubSpot, or custom CRM integrations
+                  directly into your channel discussions.
+                </span>
+                <a href="#" class="hub-item-link">Learn more about CRM <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+
+              <div class="hub-footer">
+                <div class="hub-stat-box">
+                  <span class="hub-stat-num">97 mins</span>
+                  <span class="hub-stat-note">Average time that users can save weekly with AI in
+                    Slack¹</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-mockup">
+              <img class="hub-mockup-img" src="assets/knowledge-Slackbot.png"
+                alt="Desktop Mockup showing chat query to Slackbot about team productivity analytics trends." />
+            </div>
+          </div>
+        </div>
+
+        <!-- ------- 4b: People Deep Dive Section ------- -->
+        <div id="hub-sec-people" class="hub-section">
+          <div class="hub-header">
+            <h2 class="hub-title">Let your people connect like people.</h2>
+            <p class="hub-desc">
+              Slack's conversational UI makes collaborating more approachable,
+              whether you're working with a colleague or an agent.
+            </p>
+          </div>
+
+          <div class="hub-grid">
+            <div class="hub-menu">
+              <button class="hub-menu-item active">
+                <span class="hub-item-title">It all starts with a channel.</span>
+                <span class="hub-item-desc">
+                  Channels are flexible, transparent spaces for working with
+                  your team, AI assistants, and external partners.
+                </span>
+                <a href="#" class="hub-item-link">Learn about channels <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">When talking is easier than typing...</span>
+                <span class="hub-item-desc">
+                  Start an audio or video Huddle inside any channel with a
+                  single click to brainstorm ideas instantly.
+                </span>
+                <a href="#" class="hub-item-link">Learn about huddles <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">Bring conversations out of the inbox.</span>
+                <span class="hub-item-desc">
+                  Replace fragmented, isolated email chains with organized,
+                  searchable Slack conversations.
+                </span>
+                <a href="#" class="hub-item-link">Learn about Slack Connect
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+
+              <div class="hub-footer">
+                <blockquote class="hub-quote">
+                  <span class="hub-quote-brand">Anthropic</span>
+                  "Slack has been essential to our growth, our speed and our
+                  ability to stay aligned as we scale."
+                  <span class="hub-quote-author">Kate Jenson,
+                    <span>Head of Americas, Anthropic</span></span>
+                </blockquote>
+              </div>
+            </div>
+
+            <div class="hub-mockup">
+              <img class="hub-mockup-img" src="assets/people-select.png"
+                alt="AstroCraft dashboard showing sales support channel chat conversation details." />
+            </div>
+          </div>
+        </div>
+
+        <!-- ------- 4c: Process Deep Dive Section ------- -->
+        <div id="hub-sec-process" class="hub-section">
+          <div class="hub-header">
+            <h2 class="hub-title">Manage all your work from one place.</h2>
+            <p class="hub-desc">
+              Automate daily stand-up meetings, project updates and approvals
+              so your team can focus on growth instead of guesswork.
+            </p>
+          </div>
+
+          <div class="hub-grid">
+            <div class="hub-menu">
+              <button class="hub-menu-item active">
+                <span class="hub-item-title">Anyone can automate in Slack.</span>
+                <span class="hub-item-desc">
+                  By click or by code, Slack makes it easy for anyone to build
+                  time-saving automations of their own.
+                </span>
+                <a href="#" class="hub-item-link">Learn about workflows
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">Manage projects and tasks.</span>
+                <span class="hub-item-desc">
+                  Turn conversations into trackable, actionable items using
+                  Slack Lists.
+                </span>
+                <a href="#" class="hub-item-link">Learn about lists <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">A simpler way to get started.</span>
+                <span class="hub-item-desc">
+                  Use built-in templates to launch product designs, plan
+                  campaigns, or resolve issues instantly.
+                </span>
+                <a href="#" class="hub-item-link">Learn about templates
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+
+              <div class="hub-footer">
+                <div class="hub-stat-box">
+                  <span class="hub-stat-num">35%</span>
+                  <span class="hub-stat-note">Increase in time saved due to automations for Slack
+                    users²</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-mockup">
+              <img class="hub-mockup-img" src="assets/process-select.png"
+                alt="Slack Workflow Builder setup dashboard displaying triggers and actions." />
+            </div>
+          </div>
+        </div>
+
+        <!-- ------- 4d: Platform Deep Dive Section ------- -->
+        <div id="hub-sec-platform" class="hub-section">
+          <div class="hub-header">
+            <h2 class="hub-title">Secure. Scaleable. Silo-free.</h2>
+            <p class="hub-desc">
+              Our flexible, open platform is purpose-built for bringing the
+              best agents and AI to every business, and can be tailored to fit
+              however your teams work best.
+            </p>
+          </div>
+
+          <div class="hub-grid">
+            <div class="hub-menu">
+              <button class="hub-menu-item active">
+                <span class="hub-item-title">From Atlassian to Zoom.</span>
+                <span class="hub-item-desc">
+                  Google Drive, ChatGPT, Vercel, Box, Asana, Workday. You name
+                  it, it works in Slack.
+                </span>
+                <a href="#" class="hub-item-link">See all integrations <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">Customise Slack to fit your needs.</span>
+                <span class="hub-item-desc">
+                  Leverage robust APIs to build custom integrations specific
+                  to your proprietary business logic.
+                </span>
+                <a href="#" class="hub-item-link">Learn about Slack APIs
+                  <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+              <button class="hub-menu-item">
+                <span class="hub-item-title">Work without worry.</span>
+                <span class="hub-item-desc">
+                  Slack provides enterprise-grade security, data governance,
+                  EKM, and compliance audits by default.
+                </span>
+                <a href="#" class="hub-item-link">Learn about security <i class="fa-solid fa-arrow-right"></i></a>
+              </button>
+
+              <div class="hub-footer">
+                <blockquote class="hub-quote">
+                  <span class="hub-quote-brand">▲ Vercel</span>
+                  "Work starts in conversation. That's why we see Slack as the
+                  natural place to build our agents."
+                  <span class="hub-quote-author">Guillermo Rauch, <span>CEO, Vercel</span></span>
+                </blockquote>
+              </div>
+            </div>
+
+            <div class="hub-mockup">
+              <img class="hub-mockup-img" src="assets/plateform-select.png"
+                alt="Slack Integrations Apps Grid containing Atlassian, Zoom, GitHub, Asana, Notion and Google Drive." />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 6: Business performance (Replicates 18.png) ------- -->
+      <section class="growth-section" id="business-performance">
+        <h2 class="growth-title">
+          We're in the business of growing businesses.
+        </h2>
+
+        <div class="growth-grid">
+          <div class="growth-item">
+            <span class="growth-num">90%</span>
+            <p class="growth-desc">
+              of users say that Slack helps them to stay more connected⁴
+            </p>
+          </div>
+          <div class="growth-item">
+            <span class="growth-num">43</span>
+            <p class="growth-desc">
+              The average number of apps used by teams in Slack³
+            </p>
+          </div>
+          <div class="growth-item">
+            <span class="growth-num">87%</span>
+            <p class="growth-desc">
+              of users say that Slack helps them to collaborate more
+              efficiently⁴
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 7: Millions love Slack & G2 ratings ------- -->
+      <section class="g2-ratings" id="g2-badges-ratings">
+        <div class="g2-grid">
+          <div class="g2-metrics">
+            <h2 class="carousel-title">
+              Millions of people love to work in Slack.
+            </h2>
+
+            <div class="g2-metric-box">
+              <div class="g2-metric-num">700M</div>
+              <p class="g2-metric-desc">messages sent daily³</p>
+            </div>
+            <div class="g2-metric-box">
+              <div class="g2-metric-num">4M</div>
+              <p class="g2-metric-desc">
+                Slack Connect users working directly with external teams each
+                week³
+              </p>
+            </div>
+            <div class="g2-metric-box">
+              <div class="g2-metric-num">3M</div>
+              <p class="g2-metric-desc">daily workflows³</p>
+            </div>
+            <div class="g2-metric-box g2-no-border">
+              <div class="g2-metric-num">1.7M</div>
+              <p class="g2-metric-desc">apps actively used each week³</p>
+            </div>
+          </div>
+
+          <div class="g2-badges-wrapper">
+            <h3 class="g2-badges-title">Don't just take our word for it.</h3>
+            <p class="g2-metric-desc mb-24">
+              Slack is a leader in over 303 G2 market reports.⁵
+            </p>
+
+            <div class="g2-badges-grid">
+              <img src="assets/G2_Best_Results_spring_2026.png" alt="G2 Best Results Spring 2026" />
+              <img src="assets/G2_Easiest_Setup_spring_2026.png" alt="G2 Easiest Setup Spring 2026" />
+              <img src="assets/G2_Highest_User_Adoption_spring_2026.png" alt="G2 Highest User Adoption Spring 2026" />
+              <img src="assets/G2_Leader_Small_Business_spring_2026.png" alt="G2 Leader Small Business Spring 2026" />
+              <img src="assets/G2_Leader_mid_market_spring_2026.png" alt="G2 Leader Mid-Market Spring 2026" />
+              <img src="assets/G2_Leader_Enterprise_spring_2026.png" alt="G2 Leader Enterprise Spring 2026" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 8: Deep Dive Articles Grid ------- -->
+      <section class="articles-section" id="deep-dive-articles">
+        <h2 class="articles-title">Your Slack deep dive starts here.</h2>
+
+        <div class="articles-grid">
+          <div class="article-card">
+            <div>
+              <div class="article-card-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <span class="article-card-label">Future of work</span>
+              <h3 class="article-card-title">
+                The cost of 'business as usual' in the AI era.
+              </h3>
+            </div>
+            <a href="#" class="article-card-link">LEARN MORE <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="article-card">
+            <div>
+              <div class="article-card-icon">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <span class="article-card-label">Webinar</span>
+              <h3 class="article-card-title">
+                Unlock agentic productivity for every employee.
+              </h3>
+            </div>
+            <a href="#" class="article-card-link">WATCH NOW <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="article-card">
+            <div>
+              <div class="article-card-icon">
+                <i class="fa-solid fa-newspaper"></i>
+              </div>
+              <span class="article-card-label">Blog</span>
+              <h3 class="article-card-title">
+                Agentforce 2.0: Agentforce arrives in Slack.
+              </h3>
+            </div>
+            <a href="#" class="article-card-link">READ NOW <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="article-card">
+            <div>
+              <div class="article-card-icon">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <span class="article-card-label">Guide</span>
+              <h3 class="article-card-title">
+                Ten ways to replace ineffective meetings with Slack.
+              </h3>
+            </div>
+            <a href="#" class="article-card-link">READ MORE <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------- Section 9: Accomplish Callout Banner ------- -->
+      <section class="accomplish-banner" id="accomplish-banner-section">
+        <h2 class="accomplish-title">
+          See all that you can accomplish in Slack.
+        </h2>
+        <div class="accomplish-actions">
+          <button class="btn btn-banner-white" id="acc-started">
+            GET STARTED
+          </button>
+          <button class="btn btn-banner-outline" id="acc-demo">
+            REQUEST A DEMO
+          </button>
+        </div>
+      </section>
+
+      <!-- ------- Section 10: Footnotes and Disclaimers ------- -->
+      <section class="footnotes-section" id="footnotes-panel">
+        <ol class="footnotes-list">
+          <li class="footnotes-item">
+            1. Based on an internal analysis during the pilot of AI in Slack
+            features (channel recaps, thread summaries and AI search answers).
+          </li>
+          <li class="footnotes-item">
+            2. FY24 Customer Success Metrics. Base: Total n = 247-1,696, Slack
+            internal data.
+          </li>
+          <li class="footnotes-item">
+            3. FY25 Slack internal data, product usage analysis.
+          </li>
+          <li class="footnotes-item">
+            4. FY25 Slack Customer Tracking Survey. Internal survey of weekly
+            active Slack users in the US, UK, CA and AU. Total n = 2,410.
+          </li>
+          <li class="footnotes-item">
+            5. G2 spring 2026 market reports for work management, workflow
+            management, project collaboration software, enterprise search,
+            knowledge base, employee Q&A, audio conferencing, business instant
+            messaging, unified workspaces and more.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <!-- ------- Section 11: Main Footer Section ------- -->
+    <footer class="site-footer" id="main-footer">
+      <div class="footer-controls">
+        <button class="region-btn">
+          <i class="fa-solid fa-globe"></i> Change region
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="sitemap">
+        <div class="sitemap-col">
+          <h4 class="sitemap-title">Product</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">Watch demo</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Paid vs Free</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Featured releases</a></li>
+            <li><a href="#">Change log</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+          <h4 class="sitemap-title mt-24">Why Slack?</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">Slack vs email</a></li>
+            <li><a href="#">Slack vs Teams</a></li>
+            <li><a href="#">Enterprise</a></li>
+            <li><a href="#">Small business</a></li>
+            <li><a href="#">Productivity</a></li>
+            <li><a href="#">Task management</a></li>
+            <li><a href="#">Scale</a></li>
+            <li><a href="#">Trust</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-col">
+          <h4 class="sitemap-title">Features</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">Channels</a></li>
+            <li><a href="#">Slack Connect</a></li>
+            <li><a href="#">Workflow Builder</a></li>
+            <li><a href="#">Messaging</a></li>
+            <li><a href="#">Huddles</a></li>
+            <li><a href="#">Canvas</a></li>
+            <li><a href="#">Lists</a></li>
+            <li><a href="#">Clips</a></li>
+            <li><a href="#">Apps & Integrations</a></li>
+            <li><a href="#">File sharing</a></li>
+            <li><a href="#">Slack AI</a></li>
+            <li><a href="#">Agentforce</a></li>
+            <li><a href="#">Enterprise search</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Enterprise Key Management</a></li>
+            <li><a href="#">Slack Atlas</a></li>
+            <li><a href="#">See all features</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-col">
+          <h4 class="sitemap-title">Solutions</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">Engineering</a></li>
+            <li><a href="#">IT</a></li>
+            <li><a href="#">Customer service</a></li>
+            <li><a href="#">Sales</a></li>
+            <li><a href="#">Project management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Manufacturing, auto and energy</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Media</a></li>
+            <li><a href="#">Financial services</a></li>
+            <li><a href="#">Retail</a></li>
+            <li><a href="#">Public sector</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Health and life sciences</a></li>
+            <li><a href="#">See all solutions</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-col">
+          <h4 class="sitemap-title">Resources</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">Help Centre</a></li>
+            <li><a href="#">What's new</a></li>
+            <li><a href="#">Resources library</a></li>
+            <li><a href="#">Slack blog</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Customer stories</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Partner programme</a></li>
+            <li><a href="#">Partner offers</a></li>
+            <li><a href="#">Slack Marketplace</a></li>
+            <li><a href="#">Slack Certified</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-col">
+          <h4 class="sitemap-title">Company</h4>
+          <ul class="sitemap-list">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Media kit</a></li>
+            <li><a href="#">Brand centre</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Slack shop</a></li>
+            <li><a href="#">Engineering blog</a></li>
+            <li><a href="#">Design blog</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <ul class="footer-legal">
+          <li>
+            <a href="#" class="megamenu-footer-link"><i class="fa-solid fa-cloud-arrow-down"></i> Download Slack</a>
+          </li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Cookie preferences</a></li>
+          <li>
+            <a href="#"><i class="fa-solid fa-shield-halved"></i> Your privacy
+              choices</a>
+          </li>
+        </ul>
+        <span class="footer-copy-text">
+          ©2026 Slack Technologies, LLC, a Salesforce company. All rights
+          reserved. Various trademarks held by their respective owners.
+        </span>
+      </div>
+    </footer>
+
+    <!-- ------- Sign In Modal Overlay ------- -->
+    <div id="signin-modal-overlay" class="signin-modal" role="dialog" aria-modal="true"
+      aria-labelledby="modal-signin-title">
+      <div class="modal-nav">
+        <div></div>
+        <div class="modal-helper">
+          New to Slack?
+          <a href="#">Create an account</a>
+        </div>
+        <button class="modal-close" id="signin-modal-close" aria-label="Close sign in modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-form">
+        <a href="#" class="modal-logo">
+          <img class="logo-img" src="assets/slack-logo.png" alt="Slack Logo" />
+        </a>
+
+        <h2 class="modal-title" id="modal-signin-title">
+          Enter your email to sign in
+        </h2>
+        <p class="modal-subtitle">Or choose another way to sign in.</p>
+
+        <form id="modal-email-form" onsubmit="
+              event.preventDefault();
+              alert('Signed in simulation!');
+            ">
+          <input class="modal-input" type="email" id="modal-email-input" placeholder="name@work-email.com" required />
+          <button class="btn btn-modal mt-16" type="submit">
+            Sign In With Email
+          </button>
+        </form>
+
+        <div class="modal-divider">OR SIGN IN WITH</div>
+
+        <div class="modal-socials">
+          <button class="modal-social-btn">
+            <svg viewBox="0 0 24 24" class="social-icon-svg" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                fill="#4285F4" />
+              <path
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                fill="#34A853" />
+              <path
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                fill="#FBBC05" />
+              <path
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                fill="#EA4335" />
+            </svg>
+            Google
+          </button>
+          <button class="modal-social-btn">
+            <i class="fa-brands fa-apple apple-icon-size"></i> Apple
+          </button>
+        </div>
+
+        <p class="modal-trouble">
+          Having trouble? <a href="#">Try entering a workspace URL</a>
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#">Privacy & Terms</a>
+        <a href="#">Contact Us</a>
+        <a href="#"><i class="fa-solid fa-globe"></i> Change region
+          <i class="fa-solid fa-chevron-down"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ------- Modular Script ------- -->
+  <script src="script.js"></script>
+</body>
+
+</html>

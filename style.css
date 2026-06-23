@@ -506,6 +506,19 @@ body {
   align-items: center;
 }
 
+/* Mobile marquee support on desktop - displays elements normally with no animation */
+.brand-logos-track {
+  display: contents;
+}
+
+.brand-logos-slide {
+  display: contents;
+}
+
+.brand-logos-slide:last-child {
+  display: none;
+}
+
 .brand-logo {
   height: 28px;
   width: auto;

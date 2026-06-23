@@ -292,10 +292,40 @@
   }
 
   .brand-logos {
-    flex-wrap: nowrap;
-    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: 16px;
+    padding: 10px 0;
+    gap: 0;
+    position: relative;
+    /* Smooth edges fade out */
+    mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  }
+
+  .brand-logos-track {
+    display: flex;
+    width: max-content;
+    gap: 0;
+    animation: marquee 20s linear infinite;
+  }
+
+  .brand-logos:hover .brand-logos-track {
+    animation-play-state: paused;
+  }
+
+  .brand-logos-slide {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px;
+    flex-shrink: 0;
+  }
+
+  .brand-logos-slide:last-child {
+    display: flex;
   }
 
   .brand-logo {
@@ -330,8 +360,12 @@
   }
 
   .brand-logos {
-    flex-wrap: nowrap;
-    gap: 12px;
+    gap: 0;
+  }
+
+  .brand-logos-slide {
+    gap: 32px;
+    padding-right: 32px;
   }
 
   .brand-logo {
@@ -546,8 +580,11 @@
     margin-bottom: 36px;
   }
   .brand-logos {
-    flex-wrap: nowrap;
-    gap: 25px;
+    gap: 0;
+  }
+  .brand-logos-slide {
+    gap: 24px;
+    padding-right: 24px;
   }
   .brand-logo {
     height: auto;
@@ -573,5 +610,15 @@
   .hub-tab {
     padding: 6px 4px;
     font-size: 11px;
+  }
+}
+
+/* Marquee scrolling keyframe animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
